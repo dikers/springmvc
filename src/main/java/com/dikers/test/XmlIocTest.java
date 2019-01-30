@@ -2,7 +2,7 @@ package com.dikers.test;
 
 
 import com.dikers.ioc.ApplicationContext;
-import com.dikers.ioc.impl.ClassPathXMLApplicationContext;
+import com.dikers.ioc.impl.ClassPathXmlApplicationContext;
 import com.dikers.service.StudentService;
 
 /**
@@ -11,7 +11,7 @@ import com.dikers.service.StudentService;
  */
 public class XmlIocTest {
     public static void main(String[] args) {
-        ApplicationContext context = new ClassPathXMLApplicationContext("applicationContext.xml");
+        ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
         StudentService stuServ = (StudentService) context.getBean("StudentService");
         stuServ.getStudent().selfIntroDuction();
     }
