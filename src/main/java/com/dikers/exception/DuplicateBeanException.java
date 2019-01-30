@@ -1,7 +1,7 @@
 package com.dikers.exception;
 
 /**
- * @author  jzg
+ * @author  dikers
  * @date  2019-02-25
  * 自定义异常
  */
