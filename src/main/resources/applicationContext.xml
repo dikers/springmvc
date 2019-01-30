@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans>
+    <bean id="Student" class="com.dikers.pojo.Student">
+        <property name="name" value="Hover"/>
+        <property name="add" value="China"/>
+    </bean>
+
+    <bean id="StudentService" class="com.dikers.service.StudentService">
+        <property ref="Student"/>
+    </bean>
+</beans>
