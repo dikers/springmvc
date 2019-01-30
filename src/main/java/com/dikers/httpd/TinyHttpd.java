@@ -212,11 +212,9 @@ public class TinyHttpd {
         ResponseHeaders headers = new ResponseHeaders(statusCode);
 
 
-        JSONObject object = new JSONObject();
-        object.put("code", statusCode);
-        object.put("message", "error "+ statusCode);
+        ResultVo resultVo = ResultUtils.fail(StatusCodeEnum.INTERNAL_SERVER_ERROR.getCode(), "Error");
 
-        ByteBuffer bodyBuffer = ByteBuffer.wrap(JSON.toJSONString(object).getBytes());
+        ByteBuffer bodyBuffer = ByteBuffer.wrap(JSON.toJSONString(resultVo).getBytes());
         headers.setContentLength(bodyBuffer.capacity());
         ByteBuffer headerBuffer = ByteBuffer.wrap(headers.toString().getBytes());
 
@@ -226,12 +224,10 @@ public class TinyHttpd {
 
     private ByteBuffer readController(RequestBean requestBean , Headers requestHeaders) throws IOException, ClassNotFoundException, NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
 
-//        System.out.println("==> getPath  "+requestBean.getPath());
-
         Method method = requestBean.getMethod();
         Object object = applicationContext.newInstanceBean(requestBean.getClassName());
 
-        ResultVo result = ResultUtils.fail(500, "error");
+        ResultVo result = ResultUtils.fail(StatusCodeEnum.INTERNAL_SERVER_ERROR.getCode(), "error");
         try {
             result = (ResultVo) method.invoke(object, new Object[] { requestHeaders});
         } catch (IllegalAccessException e) {
