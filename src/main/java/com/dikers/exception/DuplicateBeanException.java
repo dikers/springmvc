@@ -3,6 +3,7 @@ package com.dikers.exception;
 /**
  * @author  dikers
  * @date  2019-02-25
+ *
  * 自定义异常
  */
 public class DuplicateBeanException extends RuntimeException {
